@@ -12,8 +12,9 @@ public class AppUser : Entity
 
     public List<Order> Orders { get; set; } = new();   
 
-    public AppUser(string nama, Email email, NoHP noHP, string alamat)
+    public AppUser(Guid id, string nama, Email email, NoHP noHP, string alamat)
     {
+        Id = id;
         Nama = nama;
         Email = email;
         NoHP = noHP;

@@ -9,7 +9,7 @@ public class OrderItem : Entity, IAuditableEntity
     public DateTime AddetAt { get; set; }
     public DateTime? ModifiedAt { get; set; }
 
-    public decimal TotalHarga => Produk.Harga * Jumlah;
+    public decimal Total => Produk.Harga * Jumlah;
 
     public Order Order { get; set; }
     public Produk Produk { get; set; }
