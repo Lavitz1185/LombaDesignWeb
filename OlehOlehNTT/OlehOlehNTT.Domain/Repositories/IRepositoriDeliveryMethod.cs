@@ -9,4 +9,5 @@ public interface IRepositoriDeliveryMethod
 
     Task Add(DeliveryMethod deliveryMethod);
     Task Delete(Guid id);
+    Task Update(DeliveryMethod deliveryMethod);
 }

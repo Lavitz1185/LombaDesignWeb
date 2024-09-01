@@ -11,4 +11,5 @@ public interface IRepositoriKategoriProduk
 
     public Task Add(KategoriProduk kategori);
     public Task Delete(Guid id);
+    public Task Update(KategoriProduk kategori);
 }

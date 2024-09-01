@@ -12,4 +12,5 @@ public interface IRepositoriOrder
 
     Task Add(Order item);
     Task Delete(Guid id);
+    Task Update(Order item);
 }

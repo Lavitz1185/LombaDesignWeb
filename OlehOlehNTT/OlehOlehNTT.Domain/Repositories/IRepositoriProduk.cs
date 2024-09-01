@@ -4,9 +4,10 @@ namespace OlehOlehNTT.Domain.Repositories;
 
 public interface IRepositoriProduk
 {
-    public Task<Produk?> Get(Guid id);
-    public Task<List<Produk>> GetAll();
+    Task<Produk?> Get(Guid id);
+    Task<List<Produk>> GetAll();
 
-    public Task Add(Produk produk);
-    public Task Delete(Guid id);
+    Task Add(Produk produk);
+    Task Delete(Guid id);
+    Task Update(Produk produk);
 }
