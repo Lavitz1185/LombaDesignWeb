@@ -4,5 +4,6 @@ namespace OlehOlehNTT.Domain.Repositories;
 
 public interface IRepositoriAppUser
 {
-    public Task<Order?> GetActiveOrder(Guid id);
+    Task<AppUser?> Get(string email);
+    Task<bool> IsUnique(string email);
 }

@@ -41,9 +41,9 @@ public class Order : Entity, IAuditableEntity
         Guid id,
         AppUser appUser, 
         DeliveryMethod deliveryMethod, 
-        IRepositoriAppUser repositoriAppUser)
+        IRepositoriOrder repositoriOrder)
     {
-        if (await repositoriAppUser.GetActiveOrder(appUser.Id) is not null) return OrderErrors.UserAlreadyHaveActiveOrder;
+        if (await repositoriOrder.GetActiveOrder(appUser.Id) is not null) return OrderErrors.UserAlreadyHaveActiveOrder;
 
         return new Order(id, OrderStatus.Active, appUser, PaymentMethod.Cash, deliveryMethod);
     }

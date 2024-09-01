@@ -8,6 +8,7 @@ public interface IRepositoriOrder
     Task<Order?> GetWithProduk(Guid id);
     Task<List<Order>> GetAll();
     Task<List<Order>> GetAllWithProduk();
+    Task<Order?> GetActiveOrder(Guid idAppUser);
 
     Task Add(Order item);
     Task Delete(Guid id);
