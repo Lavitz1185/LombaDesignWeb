@@ -3,11 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35122.118
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OlehOlehNTT.Web", "OlehOlehNTT.Web\OlehOlehNTT.Web.csproj", "{0AA0DF39-4BD2-4FB5-BC87-2BFE505E5A56}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OlehOlehNTT.Web", "OlehOlehNTT.Web\OlehOlehNTT.Web.csproj", "{0AA0DF39-4BD2-4FB5-BC87-2BFE505E5A56}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OlehOlehNTT.Domain", "OlehOlehNTT.Domain\OlehOlehNTT.Domain.csproj", "{25444C4C-9EBC-4769-8D70-46284C11BE9B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OlehOlehNTT.Domain", "OlehOlehNTT.Domain\OlehOlehNTT.Domain.csproj", "{25444C4C-9EBC-4769-8D70-46284C11BE9B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OlehOlehNTT.Infrastructure", "OlehOlehNTT.Infrastructure\OlehOlehNTT.Infrastructure.csproj", "{F31D02A6-DBBD-4C84-B0FC-6495B98C2EAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OlehOlehNTT.Infrastructure", "OlehOlehNTT.Infrastructure\OlehOlehNTT.Infrastructure.csproj", "{F31D02A6-DBBD-4C84-B0FC-6495B98C2EAC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{25444C4C-9EBC-4769-8D70-46284C11BE9B} = {25444C4C-9EBC-4769-8D70-46284C11BE9B}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
