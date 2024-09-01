@@ -26,4 +26,9 @@ internal class RepositoriDeliveryMethod : IRepositoriDeliveryMethod
 
         return Task.CompletedTask;
     }
+
+    public Task Update(DeliveryMethod deliveryMethod)
+    {
+        throw new NotImplementedException();
+    }
 }
