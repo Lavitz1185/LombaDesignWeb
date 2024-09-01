@@ -19,4 +19,9 @@
     <Folder Include="Components\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\OlehOlehNTT.Domain\OlehOlehNTT.Domain.csproj" />
+    <ProjectReference Include="..\OlehOlehNTT.Infrastructure\OlehOlehNTT.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
