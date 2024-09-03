@@ -1,14 +1,31 @@
 ﻿@page "/produk"
+@inject IRepositoriProduk RepositoriProduk
 
 <h3>Product</h3>
 
-<ul>
-    @for(int i = 0; i < 14; i++)
-    {
-        <li><a href="/produk/@i">Produk Id : @i</a></li>
-    }
-</ul>
+@if (DaftarProduk is null)
+{
+    <p>...Loading</p>
+}
+else
+{
+    <ul>
+        @foreach (var produk in DaftarProduk)
+        {
+            <li>
+                Id : @produk.Id <br />
+                Nama : @produk.Nama <br />
+                Kategori : @(produk.Kategori?.Nama ?? "Tidak Ada")
+            </li>
+        }
+    </ul>
+}
 
 @code {
+    private List<Produk>? DaftarProduk = null;
 
+    protected override async Task OnInitializedAsync()
+    {
+        DaftarProduk = await RepositoriProduk.GetAll();
+    }
 }

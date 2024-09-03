@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace OlehOlehNTT.Domain.ValueObjects;
 
-public partial class Email : ValueObject
+public class Email : ValueObject
 {
     public const int MinLength = 5;
     public const int MaxLength = 15;
@@ -29,11 +29,8 @@ public partial class Email : ValueObject
 
         if (email.Length > MaxLength) return EmailErrors.TooLong;
 
-        if (!Regex().IsMatch(email)) return EmailErrors.Invalid;
+        if (!Regex.IsMatch(email, ValidRegex)) return EmailErrors.Invalid;
 
         return new Email(email);
     }
-
-    [GeneratedRegex(ValidRegex)]
-    private static partial Regex Regex();
 }

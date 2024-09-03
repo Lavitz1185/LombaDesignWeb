@@ -9,6 +9,6 @@ public class DeliveryMethod : Entity, IAuditableEntity
     public TimeSpan EstimasiWaktu { get; set; }
     public decimal EstimasiBiaya { get; set; }
 
-    public DateTime AddetAt { get; set; }
+    public DateTime AddedAt { get; set; }
     public DateTime? ModifiedAt { get; set; }
 }

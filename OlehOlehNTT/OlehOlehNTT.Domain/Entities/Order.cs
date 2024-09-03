@@ -9,43 +9,38 @@ namespace OlehOlehNTT.Domain.Entities;
 
 public class Order : Entity, IAuditableEntity
 {
-    private readonly AppUser _appUser;
     private readonly List<OrderItem> _orderItems = new();
 
     public OrderStatus Status { get; private set; }
     public PaymentMethod PaymentMethod { get; set; }
-    public DateTime AddetAt { get; set; }
+    public DateTime AddedAt { get; set; }
     public DateTime? ModifiedAt { get; set; }
 
-    public decimal Total => _orderItems.Sum(x => x.Total);
+    public double Total => _orderItems.Sum(x => x.Total);
 
-    public AppUser AppUser => _appUser;
     public IReadOnlyList<OrderItem> OrderItems => _orderItems;
+    public AppUser AppUser { get; set; }
     public DeliveryMethod DeliveryMethod { get; set; }
 
     private Order(
         Guid id,
         OrderStatus status, 
-        AppUser appUser, 
-        PaymentMethod paymentMethod, 
-        DeliveryMethod deliveryMethod)
+        PaymentMethod paymentMethod)
     {
         Id = id;
         PaymentMethod = paymentMethod;
-        DeliveryMethod = deliveryMethod;
         Status = status;
-        _appUser = appUser;
     }
 
     public static async Task<Result<Order>> CreateAsync(
         Guid id,
-        AppUser appUser, 
-        DeliveryMethod deliveryMethod, 
+        AppUser appUser,
+        DeliveryMethod deliveryMethod,
         IRepositoriOrder repositoriOrder)
     {
         if (await repositoriOrder.GetActiveOrder(appUser.Id) is not null) return OrderErrors.UserAlreadyHaveActiveOrder;
 
-        return new Order(id, OrderStatus.Active, appUser, PaymentMethod.Cash, deliveryMethod);
+        return new Order(id, OrderStatus.Active, PaymentMethod.Cash) { AppUser = appUser, DeliveryMethod = deliveryMethod };
     }
 
     public Result AddItem(OrderItem orderItem)

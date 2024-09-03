@@ -16,7 +16,13 @@ public class AppUser : Entity
 
     public List<Order> Orders { get; set; } = new();
 
-    private AppUser(Guid id, string nama, Email email, NoHP noHP, string alamat, string passwordHash)
+    private AppUser(
+        Guid id,
+        string nama,
+        Email email,
+        string passwordHash,
+        NoHP noHP,
+        string alamat)
     {
         Id = id;
         Nama = nama;
@@ -27,17 +33,17 @@ public class AppUser : Entity
     }
 
     public static async Task<Result<AppUser>> Create(
-        Guid id, 
-        string nama, 
-        Email email, 
-        NoHP noHP, 
-        string alamat, 
-        string passwordHash, 
+        Guid id,
+        string nama,
+        Email email,
+        string passwordHash,
+        NoHP noHP,
+        string alamat,
         IRepositoriAppUser repositoriAppUser)
     {
         if (!await repositoriAppUser.IsUnique(email.Value))
             return EmailErrors.NotUnique;
 
-        return new AppUser(id, nama, email, noHP, alamat, passwordHash);
+        return new AppUser(id, nama, email, passwordHash, noHP, alamat);
     }
 }
