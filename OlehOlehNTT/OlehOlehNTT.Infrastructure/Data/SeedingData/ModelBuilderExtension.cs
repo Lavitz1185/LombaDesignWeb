@@ -1,5 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using OlehOlehNTT.Domain.Entities;
+using OlehOlehNTT.Domain.ValueObjects;
 
 namespace OlehOlehNTT.Infrastructure.Data.SeedingData;
 
@@ -7,6 +9,19 @@ internal static class ModelBuilderExtension
 {
     public static void SeedingData(this ModelBuilder modelBuilder)
     {
+
+        modelBuilder.Entity<AppUser>().HasData(
+            new
+            {
+                Id = Guid.NewGuid(),
+                Nama = "Adi Juanito Taklal",
+                Email = Email.Create("aditaklal@gmail.com").Value,
+                NoHP = NoHP.Create("081234567890").Value,
+                Alamat = "DI BUMI",
+                PasswordHash = new PasswordHasher<AppUser>().HashPassword(null, "adiairnona")
+            }
+        );
+
         var daftarKategori = new KategoriProduk[]
         {
             new()

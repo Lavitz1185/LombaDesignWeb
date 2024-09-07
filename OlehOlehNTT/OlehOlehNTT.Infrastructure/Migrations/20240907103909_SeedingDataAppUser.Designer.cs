@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OlehOlehNTT.Infrastructure.Data;
 
@@ -10,9 +11,11 @@ using OlehOlehNTT.Infrastructure.Data;
 namespace OlehOlehNTT.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240907103909_SeedingDataAppUser")]
+    partial class SeedingDataAppUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.19");
@@ -53,12 +56,12 @@ namespace OlehOlehNTT.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("2059868c-4560-4a0c-b1e0-0f820daf65c1"),
+                            Id = new Guid("5f3add67-90a5-43aa-bc8e-bce3a57c21da"),
                             Alamat = "DI BUMI",
                             Email = "aditaklal@gmail.com",
                             Nama = "Adi Juanito Taklal",
                             NoHP = "081234567890",
-                            PasswordHash = "AQAAAAIAAYagAAAAEANLwcgnPskEgQTrGIriPeeXIzl4GKgaYKwg0Qbc33XLRVwhINIf6AgV/TdGiy8svw=="
+                            PasswordHash = "AQAAAAIAAYagAAAAEKboqqd0sjg1V6K6NpKhDD3jxni8DWxgmFMB4wDaEgCkte7DpPvfCUG/qWm8AqNMCw=="
                         });
                 });
 
@@ -80,12 +83,17 @@ namespace OlehOlehNTT.Infrastructure.Migrations
                     b.Property<Guid>("OrderId")
                         .HasColumnType("TEXT");
 
+                    b.Property<Guid?>("OrderId1")
+                        .HasColumnType("TEXT");
+
                     b.Property<Guid>("ProdukId")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
                     b.HasIndex("OrderId");
+
+                    b.HasIndex("OrderId1");
 
                     b.HasIndex("ProdukId");
 
@@ -115,8 +123,8 @@ namespace OlehOlehNTT.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("7b3fca97-0411-4c97-89c4-286b296b5ea3"),
-                            AddedAt = new DateTime(2024, 9, 7, 19, 41, 56, 426, DateTimeKind.Local).AddTicks(670),
+                            Id = new Guid("929054cc-8fad-4723-a3fa-cf3dcbc2e32d"),
+                            AddedAt = new DateTime(2024, 9, 7, 18, 39, 9, 694, DateTimeKind.Local).AddTicks(7300),
                             Nama = "Makanan"
                         });
                 });
@@ -248,8 +256,8 @@ namespace OlehOlehNTT.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("57af9c5d-51ee-4c71-bdd8-0f36d55132b7"),
-                            AddedAt = new DateTime(2024, 9, 7, 19, 41, 56, 426, DateTimeKind.Local).AddTicks(1092),
+                            Id = new Guid("49259e88-c85b-4621-9ecb-de8d2748d6a2"),
+                            AddedAt = new DateTime(2024, 9, 7, 18, 39, 9, 694, DateTimeKind.Local).AddTicks(7692),
                             Berat = 1000.0,
                             Dekripsi = "Paling enak makan dengan nasi",
                             Harga = 50000.0,
@@ -261,10 +269,14 @@ namespace OlehOlehNTT.Infrastructure.Migrations
             modelBuilder.Entity("OlehOlehNTT.Domain.Entities.DetailOrder", b =>
                 {
                     b.HasOne("OlehOlehNTT.Domain.Entities.Order", "Order")
-                        .WithMany("DaftarDetailOrder")
+                        .WithMany()
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("OlehOlehNTT.Domain.Entities.Order", null)
+                        .WithMany("DaftarDetailOrder")
+                        .HasForeignKey("OrderId1");
 
                     b.HasOne("OlehOlehNTT.Domain.Entities.Produk", "Produk")
                         .WithMany()

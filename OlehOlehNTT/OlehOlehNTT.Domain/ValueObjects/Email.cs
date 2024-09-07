@@ -8,7 +8,7 @@ namespace OlehOlehNTT.Domain.ValueObjects;
 public class Email : ValueObject
 {
     public const int MinLength = 5;
-    public const int MaxLength = 15;
+    public const int MaxLength = 50;
     public const string ValidRegex = @"^[a-zA-Z]+@[a-zA-Z]+\.[a-z]+$";
 
     public string Value { get; }

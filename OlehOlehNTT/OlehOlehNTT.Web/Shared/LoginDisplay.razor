@@ -1,12 +1,12 @@
-﻿<AuthorizeView>
+﻿@inject OlehOlehNTT.Web.Authentication.SignInManager SignInManager
+
+<AuthorizeView>
     <Authorized>
-        <a href="Identity/Account/Manage">Hello, @context.User.Identity?.Name!</a>
-        <form method="post" action="Identity/Account/Logout">
-            <button type="submit" class="nav-link btn btn-link">Log out</button>
-        </form>
+        Hello, @context.User.Identity?.Name!
+        
+        <button @onclick="() => SignInManager.SignOut()" class="nav-link btn btn-link">Log out</button>
     </Authorized>
     <NotAuthorized>
-        <a href="Identity/Account/Register">Register</a>
-        <a href="Identity/Account/Login">Log in</a>
+        <a href="/login">Log in</a>
     </NotAuthorized>
 </AuthorizeView>

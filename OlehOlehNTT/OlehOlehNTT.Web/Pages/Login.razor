@@ -1,0 +1,69 @@
+﻿@page "/login"
+
+@using System.ComponentModel.DataAnnotations
+@inject OlehOlehNTT.Web.Authentication.SignInManager SignInManager
+@inject IJSRuntime JSRuntime
+
+<AuthorizeView>
+    <Authorized>
+        Anda Telah Login, @context.User.Identity?.Name!
+    </Authorized>
+    <NotAuthorized>
+        <EditForm Model=@Model Context="editFormContext" OnValidSubmit="Submit" class="container">
+            <ValidationSummary />
+
+            <div class="row mb-3">
+                <div class="col">
+                    <label class="form-label" for="email">Email</label>
+                    <InputText @bind-Value=@Model.Email class="form-control" id="email" />
+                    <ValidationMessage For="() => Model.Email" class="text-danger form-text" />
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col">
+                    <label class="form-label" for="password">Password</label>
+                    <InputText @bind-Value=@Model.Password class="form-control" type="password" id="password" />
+                    <ValidationMessage For="() => Model.Password" class="text-danger form-text" />
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </EditForm>
+    </NotAuthorized>
+</AuthorizeView>
+
+@code {
+    private class InputModel
+    {
+        [Display(Name = "Email")]
+        [Required(ErrorMessage = "{0} harus diisi")]
+        [EmailAddress(ErrorMessage = "{0} tidak valid")]
+        [MinLength(OlehOlehNTT.Domain.ValueObjects.Email.MinLength, ErrorMessage = "Panjang {0} minimal {1}")]
+        [MaxLength(OlehOlehNTT.Domain.ValueObjects.Email.MaxLength, ErrorMessage = "Panjang {0} maksimal {1}")]
+        public string Email { get; set; } = string.Empty;
+
+        [Display(Name = "Password")]
+        [Required(ErrorMessage = "{0} harus diisi")]
+        public string Password { get; set; } = string.Empty;
+    }
+
+    [CascadingParameter]
+    public Task<AuthenticationState>? authenticationState { get; set; }
+
+    private InputModel Model = new();
+
+    private async Task Submit(EditContext editContext)
+    {
+        var result = await SignInManager.SignIn(Model.Email, Model.Password);
+
+        if(result.IsFailure)
+        {
+            await JSRuntime.InvokeVoidAsync("alert", "Login Gagal!");
+        }
+    }
+}

@@ -1,17 +1,13 @@
 using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.AspNetCore.Identity;
-using OlehOlehNTT.Web.Areas.Identity;
 using OlehOlehNTT.Infrastructure;
-using Microsoft.EntityFrameworkCore.Storage;
-using OlehOlehNTT.Infrastructure.Data;
-using Microsoft.EntityFrameworkCore;
+using OlehOlehNTT.Web.Authentication;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
-
+builder.Services.AddScoped<SignInManager>();
+builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
 
 // Add services to the container.
 builder.Services.AddInfrastructure(builder.Configuration);

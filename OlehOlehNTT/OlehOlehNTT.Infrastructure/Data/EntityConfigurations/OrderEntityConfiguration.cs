@@ -12,6 +12,6 @@ internal class OrderEntityConfiguration : IEntityTypeConfiguration<Order>
         builder.HasOne(o => o.AppUser).WithMany(a => a.Orders);
         builder.HasOne(o => o.MetodePembayaran).WithMany();
         builder.HasOne(o => o.Kurir).WithMany();
-        builder.HasMany(o => o.DaftarDetailOrder).WithOne();
+        builder.HasMany(o => o.DaftarDetailOrder).WithOne(o => o.Order);
     }
 }
