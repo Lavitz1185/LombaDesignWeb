@@ -1,30 +1,35 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.EntityFrameworkCore;
 using OlehOlehNTT.Domain.Entities;
 using OlehOlehNTT.Domain.Repositories;
+using OlehOlehNTT.Infrastructure.Data;
 
 namespace OlehOlehNTT.Infrastructure.Repositories;
 
 internal class RepositoriAppUser : IRepositoriAppUser
 {
-    public static readonly List<AppUser> DaftarAppUser = new();
+    private readonly AppDbContext _appDbContext;
 
-    public Task<AppUser?> Get(string email) => Task.FromResult(DaftarAppUser.FirstOrDefault(x => x.Email.Value == email));
-
-    public Task<bool> IsUnique(string email) => Task.FromResult(DaftarAppUser.All(x => x.Email.Value != email));
-
-
-    public Task Add(AppUser user)
+    public RepositoriAppUser(AppDbContext appDbContext)
     {
-        throw new NotImplementedException();
+        _appDbContext = appDbContext;
     }
 
-    public Task Delete(AppUser user)
+    public Task<AppUser?> Get(string email) => _appDbContext.TabelAppUser.FirstOrDefaultAsync(x => x.Email.Value == email);
+
+    public Task<bool> IsUnique(string email) => _appDbContext.TabelAppUser.AnyAsync(x => x.Email.Value == email)!;
+
+    public void Add(AppUser user)
     {
-        throw new NotImplementedException();
+        _appDbContext.TabelAppUser.Add(user);
     }
 
-    public Task Update(AppUser user)
+    public void Delete(AppUser user)
     {
-        throw new NotImplementedException();
+        _appDbContext.TabelAppUser.Remove(user);
+    }
+
+    public void Update(AppUser user)
+    {
+        _appDbContext.TabelAppUser.Update(user);
     }
 }

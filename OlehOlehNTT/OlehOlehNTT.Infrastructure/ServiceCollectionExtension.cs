@@ -16,9 +16,12 @@ public static class ServiceCollectionExtension
 
         services.AddDbContext<AppDbContext>(options => options.UseSqlite(connectionString));
         services.AddScoped<IRepositoriAppUser, RepositoriAppUser>();
-        services.AddScoped<IRepositoriDeliveryMethod, RepositoriDeliveryMethod>();
+        services.AddScoped<IRepositoriKurir, RepositoriKurir>();
+        services.AddScoped<IRepositoriMetodePembayaran, RepositoriMetodePembayaran>();
         services.AddScoped<IRepositoriProduk, RepositoriProduk>();
         services.AddScoped<IRepositoriKategoriProduk, RepositoriKategoriProduk>();
+        services.AddScoped<IRepositoriOrder, RepositoriOrder>();
+        services.AddScoped<IRepositoriDetailOrder, RepositoriDetailOrder>();
 
         return services;
     }

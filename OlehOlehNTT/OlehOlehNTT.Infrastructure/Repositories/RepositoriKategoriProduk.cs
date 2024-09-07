@@ -30,18 +30,9 @@ internal class RepositoriKategoriProduk : IRepositoriKategoriProduk
             .Include(k => k.DaftarProduk)
             .ToListAsync();
 
-    public Task Add(KategoriProduk kategori)
-    {
-        throw new NotImplementedException();
-    }
+    public void Add(KategoriProduk kategori) => _appDbContext.TabelKategoriProduk.Add(kategori);
 
-    public Task Delete(Guid id)
-    {
-        throw new NotImplementedException();
-    }
+    public void Delete(KategoriProduk kategori) => _appDbContext.TabelKategoriProduk.Remove(kategori);
 
-    public Task Update(KategoriProduk kategori)
-    {
-        throw new NotImplementedException();
-    }
+    public void Update(KategoriProduk kategori) => _appDbContext.TabelKategoriProduk.Update(kategori);
 }

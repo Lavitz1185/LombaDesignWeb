@@ -27,6 +27,7 @@ internal static class ModelBuilderExtension
                 Dekripsi = "Paling enak makan dengan nasi",
                 Harga = 50e3,
                 Stok = 100,
+                Berat = 1000d,
                 KategorId = daftarKategori[0].Id,
                 AddedAt = DateTime.Now,
             });

@@ -3,7 +3,7 @@ using OlehOlehNTT.Domain.Contracts;
 
 namespace OlehOlehNTT.Domain.Entities;
 
-public class OrderItem : Entity, IAuditableEntity
+public class DetailOrder : Entity, IAuditableEntity
 {
     public int Jumlah { get; set; }
     public DateTime AddedAt { get; set; }

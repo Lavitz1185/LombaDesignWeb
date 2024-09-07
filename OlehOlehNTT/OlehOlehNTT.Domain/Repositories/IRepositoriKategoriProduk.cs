@@ -4,12 +4,12 @@ namespace OlehOlehNTT.Domain.Repositories;
 
 public interface IRepositoriKategoriProduk
 {
-    public Task<KategoriProduk?> Get(Guid id);
-    public Task<KategoriProduk?> GetWithProduk(Guid id);
-    public Task<List<KategoriProduk>> GetAll();
-    public Task<List<KategoriProduk>> GetAllWithProduk();
+    Task<KategoriProduk?> Get(Guid id);
+    Task<KategoriProduk?> GetWithProduk(Guid id);
+    Task<List<KategoriProduk>> GetAll();
+    Task<List<KategoriProduk>> GetAllWithProduk();
 
-    public Task Add(KategoriProduk kategori);
-    public Task Delete(Guid id);
-    public Task Update(KategoriProduk kategori);
+    void Add(KategoriProduk kategori);
+    void Delete(KategoriProduk kategori);
+    void Update(KategoriProduk kategori);
 }

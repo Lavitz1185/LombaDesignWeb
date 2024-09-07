@@ -9,6 +9,7 @@ public class Produk : Entity, IAuditableEntity
     public string Dekripsi { get; set; } = string.Empty;
     public double Harga { get; set; }
     public int Stok { get; set; }
+    public double Berat { get; set; }
     public Uri? UrlGambar { get; set; }
     public string? Ukuran { get; set; }
     public string? Warna { get; set; }

@@ -19,20 +19,14 @@ internal class RepositoriProduk : IRepositoriProduk
             .Include(p => p.Kategori)
             .FirstOrDefaultAsync(p => p.Id == id);
 
-    public async Task<List<Produk>> GetAll() => await _appDbContext.TabelProduk.ToListAsync();
+    public async Task<List<Produk>> GetAll() => 
+        await _appDbContext.TabelProduk
+            .Include(p => p.Kategori)
+            .ToListAsync();
 
-    public Task Update(Produk produk)
-    {
-        throw new NotImplementedException();
-    }
+    public void Add(Produk produk) => _appDbContext.TabelProduk.Add(produk);
 
-    public Task Add(Produk produk)
-    {
-        throw new NotImplementedException();
-    }
+    public void Delete(Produk produk) => _appDbContext.TabelProduk.Remove(produk);
 
-    public Task Delete(Guid id)
-    {
-        throw new NotImplementedException();
-    }
+    public void Update(Produk produk) => _appDbContext.TabelProduk.Update(produk);
 }

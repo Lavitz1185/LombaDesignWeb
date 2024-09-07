@@ -7,7 +7,7 @@ public interface IRepositoriProduk
     Task<Produk?> Get(Guid id);
     Task<List<Produk>> GetAll();
 
-    Task Add(Produk produk);
-    Task Delete(Guid id);
-    Task Update(Produk produk);
+    void Add(Produk produk);
+    void Delete(Produk produk);
+    void Update(Produk produk);
 }
