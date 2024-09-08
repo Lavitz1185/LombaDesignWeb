@@ -9,29 +9,17 @@ namespace OlehOlehNTT.Web.Authentication;
 
 public class SignInManager
 {
-    private const string SessionKey = "OlehOlehNTT.AuthKey";
-    private const string CustomAuthenticationScheme = "CustomAuthenticationScheme";
-
     private readonly IRepositoriAppUser _repositoriAppUser;
+    private readonly ProtectedSessionStorage _protectedSessionStorage;
     private ClaimsPrincipal? _currentUser;
 
-    public SignInManager(IRepositoriAppUser repositoriAppUser)
+    public SignInManager(IRepositoriAppUser repositoriAppUser, ProtectedSessionStorage protectedSessionStorage)
     {
         _repositoriAppUser = repositoriAppUser;
+        _protectedSessionStorage = protectedSessionStorage;
     }
 
     public Action<ClaimsPrincipal>? UserChanged;
-
-    public ClaimsPrincipal CurrentUser 
-    { 
-        get => _currentUser ?? new(); 
-        set 
-        {
-            _currentUser = value;
-            
-            UserChanged?.Invoke(_currentUser);
-        }
-    }
 
     public async Task<Result> SignIn(string email, string password)
     {
@@ -45,20 +33,26 @@ public class SignInManager
         if (passwordHasher.VerifyHashedPassword(user, user.PasswordHash, password) == PasswordVerificationResult.Failed)
             return new Error("SigIn.PasswordVerificationFailed", "Password salah!");
 
-        CurrentUser = new ClaimsPrincipal(new ClaimsIdentity(new List<Claim>
+        var claims = new List<Claim>
         {
             new(ClaimTypes.Name, email),
             new(ClaimTypes.Email, email),
             new(ClaimTypes.Role, "user")
-        }, CustomAuthenticationScheme));
+        };
+        var identity = new ClaimsIdentity(claims, CustomAuthentication.CustomAuthenticationScheme);
+        var principal = new ClaimsPrincipal(identity);
+        var userSession = new UserSession { Name = email, Email = email, Role = "user" };
 
+        await _protectedSessionStorage.SetAsync(CustomAuthentication.SessionKey, userSession);
+
+        UserChanged?.Invoke(principal);
         return Result.Success();
     }
 
-    public Result SignOut()
+    public async Task<Result> SignOutAsync()
     {
-        CurrentUser = new();
-
+        await _protectedSessionStorage.DeleteAsync(CustomAuthentication.SessionKey);
+        UserChanged?.Invoke(new());
         return Result.Success();
     }
 }

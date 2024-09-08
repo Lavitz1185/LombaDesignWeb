@@ -60,10 +60,5 @@
     private async Task Submit(EditContext editContext)
     {
         var result = await SignInManager.SignIn(Model.Email, Model.Password);
-
-        if(result.IsFailure)
-        {
-            await JSRuntime.InvokeVoidAsync("alert", "Login Gagal!");
-        }
     }
 }

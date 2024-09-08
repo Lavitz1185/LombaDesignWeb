@@ -4,7 +4,7 @@
     <Authorized>
         Hello, @context.User.Identity?.Name!
         
-        <button @onclick="() => SignInManager.SignOut()" class="nav-link btn btn-link">Log out</button>
+        <button @onclick="async () => await SignInManager.SignOutAsync()" class="nav-link btn btn-link">Log out</button>
     </Authorized>
     <NotAuthorized>
         <a href="/login">Log in</a>
