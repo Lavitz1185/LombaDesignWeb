@@ -1,4 +1,11 @@
 ﻿@page "/"
+@inject IJSRuntime JSRuntime
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender) {
+        await JSRuntime.InvokeVoidAsync("init");
+    }
+}
 
 <!--===== NAVBAR =====-->
 <nav>
@@ -281,7 +288,7 @@
                 <img class="gambar_blog" src="assets/contoh_berita.png" alt="blog" />
                 <div class="blog__details">
                     <p>Berita</p>
-                    <h6>Mengenal Makanan Khas NTT: Lezat dan Unik</h6>
+                    <h5>Mengenal Makanan Khas NTT: Lezat dan Unik</h5>
                     <h6>
                         Nusa Tenggara Timur (NTT) dikenal dengan berbagai kuliner khas yang menggugah selera.
                         Di antara makanan-makanan tersebut, beberapa yang patut dicoba adalah Se’i Babi, daging

@@ -91,6 +91,7 @@
     font-weight: 600;
     line-height: 3.25rem;
     color: var(--text-dark);
+    border: none !important;
 }
 
     .section__header span {
@@ -416,7 +417,7 @@ nav {
 }
 
 .swiper-button-prev, .swiper-button-next {
-    color: var(--white);
+    color: var(--white) !important;
     background-color: transparent;
 }
 
