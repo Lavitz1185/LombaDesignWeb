@@ -5,7 +5,14 @@
             <a href="#"><span>NTT</span>oleholeh</a>
         </div>
         <div class="nav__menu__btn" @onclick="(e) => isOpen = !isOpen">
-            <i class="@(isOpen ? "ri-close-line" : "ri-menu-line")"></i>
+            @if(isOpen)
+            {
+                <RemixIcon Name="close" Type="IconType.Line" />
+            }
+            else
+            {
+                <RemixIcon Name="menu" Type=IconType.Line />
+            }
         </div>
     </div>
     <ul class="nav__links @(isOpen ? "open" : "")" @onclick="() => isOpen = false">

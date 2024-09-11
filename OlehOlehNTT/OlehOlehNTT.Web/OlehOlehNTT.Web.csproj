@@ -6,7 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>aspnet-OlehOlehNTT.Web-a90cd366-4abb-49f1-bd12-315fb9eafd8e</UserSecretsId>
   </PropertyGroup>
-
+	
   <ItemGroup>
     <PackageReference Include="Humanizer.Core.id" Version="2.14.1" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="7.0.19" />
@@ -14,10 +14,6 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.19" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.19" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.19" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Components\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,0 +1,27 @@
+﻿<i @attributes="AdditionalAttributes" class="@IconClass"></i>
+
+@code {
+    [Parameter]
+    public string Name { get; set; } = "";
+
+    [Parameter]
+    public IconType Type { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private string IconClass = "";
+
+    private string IconTypeToString() =>
+        Type switch
+        {
+            IconType.Line => "line",
+            IconType.Fill => "fill",
+            _ => ""
+        };
+        
+    protected override void OnParametersSet()
+    {
+        IconClass = $"ri-{Name}-{IconTypeToString()}";
+    }
+}

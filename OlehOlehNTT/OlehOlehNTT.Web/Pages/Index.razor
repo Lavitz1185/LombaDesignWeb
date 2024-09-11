@@ -2,9 +2,19 @@
 @inject IJSRuntime JSRuntime
 
 @code {
+    private List<string> daftarKategori = new()
+    {
+        "Kain Tenun",
+        "Makanan",
+        "Minuman",
+        "Aksesoris",
+        "Pakaian",
+        "Lain-Lain",
+    };
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        await JSRuntime.InvokeVoidAsync("init");
+        await JSRuntime.InvokeVoidAsync("initJS");
     }
 }
 
@@ -24,7 +34,7 @@
                 <button class="btn">Semua Produk</button>
                 <a href="#">
                     Produk Terbaru
-                    <span><i class="ri-arrow-right-up-line"></i></span>
+                    <span><RemixIcon Name="arrow-right-up"/></span>
                 </a>
             </div>
         </div>
@@ -57,78 +67,18 @@
     <h2 class="section__header">
         Kategori Produk<span></span>
     </h2>
-    <!-- Slider main container -->
-    <div class="swiper">
-        <!-- Additional required wrapper -->
-        <div class="swiper-wrapper">
-            <!-- Slides -->
-            <div class="swiper-slide">
-                <div class="kategori__card">
-                    <div class="gambar_kategori">
-                        <img src="assets/kategori_kain.png">
-                    </div>
-                    <div class="nama_kategori">
-                        <h4>Kain Tenun</h4>
-                    </div>
-                </div>
+
+    <SwiperListView Count="daftarKategori.Count" Context="context">
+        <div class="kategori__card">
+            <div class="gambar_kategori">
+                <img src="assets/kategori_kain.png">
             </div>
-            <div class="swiper-slide">
-                <div class="kategori__card">
-                    <div class="gambar_kategori">
-                        <img src="assets/kategori_kain.png">
-                    </div>
-                    <div class="nama_kategori">
-                        <h4>Makanan</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <div class="kategori__card">
-                    <div class="gambar_kategori">
-                        <img src="assets/kategori_kain.png">
-                    </div>
-                    <div class="nama_kategori">
-                        <h4>Minuman</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <div class="kategori__card">
-                    <div class="gambar_kategori">
-                        <img src="assets/kategori_kain.png">
-                    </div>
-                    <div class="nama_kategori">
-                        <h4>Aksesoris</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <div class="kategori__card">
-                    <div class="gambar_kategori">
-                        <img src="assets/kategori_kain.png">
-                    </div>
-                    <div class="nama_kategori">
-                        <h4>Pakaian</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <div class="kategori__card">
-                    <div class="gambar_kategori">
-                        <img src="assets/kategori_kain.png">
-                    </div>
-                    <div class="nama_kategori">
-                        <h4>Lain-Lain</h4>
-                    </div>
-                </div>
+            <div class="nama_kategori">
+                <h4>@daftarKategori[context]</h4>
             </div>
         </div>
-        <!-- Tombol Navigasi -->
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-        <!-- Scrollbar -->
-        <div class="swiper-scrollbar"></div>
-    </div>
+    </SwiperListView>
+
 </section>
 <!--===== AKHIR KATEGORI PRODUK =====-->
 <!--===== PRODUK TERLARIS =====-->
@@ -229,21 +179,21 @@
     </div>
     <div class="service__grid">
         <div class="service__card">
-            <span><i class="ri-grid-line"></i></span>
+            <span><RemixIcon Name="grid"/></span>
             <h4>Kategori Lengkap</h4>
             <p>
                 Menyediakan berbagai produk oleh-oleh seperti makanan khas, kerajinan tangan, hingga kain tenun asli NTT.
             </p>
         </div>
         <div class="service__card">
-            <span><i class="ri-map-pin-line"></i></span>
+            <span><RemixIcon Name="map-pin" /></span>
             <h4>Pengiriman Luas</h4>
             <p>
                 Layanan pengiriman ke seluruh Indonesia dengan jaminan keamanan dan ketepatan waktu.
             </p>
         </div>
         <div class="service__card">
-            <span><i class="ri-hand-heart-line"></i></span>
+            <span><RemixIcon Name="heart" /></span>
             <h4>Dukungan UMKM Lokal</h4>
             <p>
                 Kami mendukung pengrajin lokal dengan menjual produk-produk terbaik mereka, membantu perekonomian NTT.
@@ -344,13 +294,13 @@
             </p>
             <ul class="footer__socials">
                 <li>
-                    <a href="#"><i class="ri-instagram-fill"></i></a>
+                    <a href="#"><RemixIcon Name="instagram" Type=IconType.Fill/></a>
                 </li>
                 <li>
-                    <a href="#"><i class="ri-facebook-fill"></i></a>
+                    <a href="#"><RemixIcon Name="facebook" Type=IconType.Fill /></a>
                 </li>
                 <li>
-                    <a href="#"><i class="ri-twitter-fill"></i></a>
+                    <a href="#"><RemixIcon Name="twitter" Type=IconType.Fill /></a>
                 </li>
             </ul>
         </div>
