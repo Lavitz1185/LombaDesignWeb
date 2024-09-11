@@ -7,11 +7,11 @@
         <div class="nav__menu__btn" @onclick="(e) => isOpen = !isOpen">
             @if(isOpen)
             {
-                <RemixIcon Icon="close" Type="IconType.Line" />
+                <RemixIcon Icon=@RemixIcons.Close Type="IconType.Line" />
             }
             else
             {
-                <RemixIcon Icon="menu" Type=IconType.Line />
+                <RemixIcon Icon=@RemixIcons.Menu Type=IconType.Line />
             }
         </div>
     </div>
