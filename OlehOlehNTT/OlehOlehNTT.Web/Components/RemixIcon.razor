@@ -1,27 +1,25 @@
-﻿<i @attributes="AdditionalAttributes" class="@IconClass"></i>
+﻿<i @attributes="AdditionalAttributes" class="@CssClass()" style="font-size:@(Size)rem"></i>
 
 @code {
     [Parameter]
-    public string Name { get; set; } = "";
+    public string Icon { get; set; } = "";
 
     [Parameter]
     public IconType Type { get; set; }
 
+    [Parameter]
+    public double Size { get; set; } = 1;
+
     [Parameter(CaptureUnmatchedValues = true)]
     public Dictionary<string, object>? AdditionalAttributes { get; set; }
-
-    private string IconClass = "";
 
     private string IconTypeToString() =>
         Type switch
         {
             IconType.Line => "line",
             IconType.Fill => "fill",
-            _ => ""
+            _ => "line"
         };
-        
-    protected override void OnParametersSet()
-    {
-        IconClass = $"ri-{Name}-{IconTypeToString()}";
-    }
+
+    private string CssClass() => $"ri-{Icon}-{IconTypeToString()}";
 }
