@@ -1,32 +1,23 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">OlehOlehNTT.Web</a>
-        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
-</div>
-
-<div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
-    <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
-            </NavLink>
-            <NavLink class="nav-link" href="/produk" Match="NavLinkMatch.Prefix">
-                <span class="oi oi-list aria-hidden="true"></span> Daftar Produk
-            </NavLink>
+﻿<!--===== NAVBAR =====-->
+<nav>
+    <div class="nav__header">
+        <div class="nav__logo">
+            <a href="#"><span>NTT</span>oleholeh</a>
         </div>
-    </nav>
-</div>
-
-@code {
-    private bool collapseNavMenu = true;
-
-    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu()
-    {
-        collapseNavMenu = !collapseNavMenu;
-    }
-}
+        <div class="nav__menu__btn" id="menu-btn">
+            <i class="ri-menu-line"></i>
+        </div>
+    </div>
+    <ul class="nav__links" id="nav-links">
+        <li><NavLink Match="NavLinkMatch.Prefix" href="#about">Produk</NavLink></li>
+        <li><NavLink Match="NavLinkMatch.Prefix" href="#skill">Pesanan Saya</NavLink></li>
+        <li><NavLink Match="NavLinkMatch.Prefix" href="#portfolio">Blog</NavLink></li>
+        <li><NavLink Match="NavLinkMatch.Prefix" href="#review">Tentang Kami</NavLink></li>
+        <li><NavLink Match="NavLinkMatch.Prefix" href="#review">Kontak</NavLink></li>
+    </ul>
+    <div class="nav__btn">
+        <a href="" class="" download="">Register</a>
+        <a href="" class="btn" download="">Login</a>
+    </div>
+</nav>
+<!--===== AKHIR NAVBAR =====-->

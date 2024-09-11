@@ -2,34 +2,11 @@
 @inject IJSRuntime JSRuntime
 
 @code {
-    protected override async Task OnAfterRenderAsync(bool firstRender) {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
         await JSRuntime.InvokeVoidAsync("init");
     }
 }
-
-<!--===== NAVBAR =====-->
-<nav>
-    <div class="nav__header">
-        <div class="nav__logo">
-            <a href="#"><span>NTT</span>oleholeh</a>
-        </div>
-        <div class="nav__menu__btn" id="menu-btn">
-            <i class="ri-menu-line"></i>
-        </div>
-    </div>
-    <ul class="nav__links" id="nav-links">
-        <li><a href="#about">Produk</a></li>
-        <li><a href="#skill">Pesanan Saya</a></li>
-        <li><a href="#portfolio">Blog</a></li>
-        <li><a href="#review">Tentang Kami</a></li>
-        <li><a href="#review">Kontak</a></li>
-    </ul>
-    <div class="nav__btn">
-        <a href="" class="" download="">Register</a>
-        <a href="" class="btn" download="">Login</a>
-    </div>
-</nav>
-<!--===== AKHIR NAVBAR =====-->
 
 <!--===== HERO =====-->
 <div class="hero">
