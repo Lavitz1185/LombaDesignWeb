@@ -4,11 +4,11 @@
         <div class="nav__logo">
             <a href="#"><span>NTT</span>oleholeh</a>
         </div>
-        <div class="nav__menu__btn" @onclick="MenuButtonClick">
+        <div class="nav__menu__btn" @onclick="(e) => isOpen = !isOpen">
             <i class="@(isOpen ? "ri-close-line" : "ri-menu-line")"></i>
         </div>
     </div>
-    <ul class="nav__links @(isOpen ? "open" : "")" @onclick="NavLinksClick">
+    <ul class="nav__links @(isOpen ? "open" : "")" @onclick="() => isOpen = false">
         <li><NavLink Match="NavLinkMatch.Prefix" href="#about">Produk</NavLink></li>
         <li><NavLink Match="NavLinkMatch.Prefix" href="#skill">Pesanan Saya</NavLink></li>
         <li><NavLink Match="NavLinkMatch.Prefix" href="#portfolio">Blog</NavLink></li>
@@ -24,14 +24,4 @@
 
 @code {
     private bool isOpen = false;
-
-    private void MenuButtonClick(MouseEventArgs e)
-    {
-        isOpen = !isOpen;
-    }
-
-    private void NavLinksClick(MouseEventArgs e)
-    {
-        isOpen = false;
-    }
 }
