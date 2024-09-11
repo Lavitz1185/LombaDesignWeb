@@ -13,7 +13,7 @@
     [Parameter(CaptureUnmatchedValues = true)]
     public Dictionary<string, object>? AdditionalAttributes { get; set; }
 
-    private string IconTypeToString() =>
+    private string TypeToString() =>
         Type switch
         {
             IconType.Line => "line",
@@ -21,5 +21,5 @@
             _ => "line"
         };
 
-    private string CssClass() => $"ri-{Icon}-{IconTypeToString()}";
+    private string CssClass() => $"ri-{Icon}-{TypeToString()}";
 }
