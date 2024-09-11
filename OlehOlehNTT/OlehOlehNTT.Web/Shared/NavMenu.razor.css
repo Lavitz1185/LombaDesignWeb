@@ -35,9 +35,7 @@ nav {
     }
 
 .nav__menu__btn {
-    font-size: 1.5rem;
     color: var(--white);
-    cursor: pointer;
 }
 
 .nav__links {
@@ -64,11 +62,6 @@ nav {
         font-weight: 500;
         color: var(--white);
     }
-
-.nav__btn {
-    display: none;
-    gap: 5px;
-}
 
 /*---------------------------------------------------------------------------------------------------*\
   #RESPONSIVE LEBAR DI ATAS 758 PX
@@ -123,27 +116,6 @@ nav {
             .nav__links ::deep a:hover {
                 color: var(--primary-color);
             }
-
-
-    .nav__btn {
-        flex: 1;
-        display: flex;
-        justify-content: flex-end;
-    }
-
-        .nav__btn ::deep a {
-            padding: 0.75rem 1.5rem;
-            font-size: 1rem;
-            font-weight: 500;
-            white-space: nowrap;
-            border: 2px solid var(--primary-color);
-            border-radius: 10px;
-        }
-
-            .nav__btn ::deep a:hover {
-                color: var(--white);
-                background-color: var(--primary-color);
-            }
 }
 
 /*---------------------------------------------------------------------------------------------------*\
@@ -158,15 +130,6 @@ nav {
     .nav__logo ::deep a {
         font-size: 1rem;
         color: var(--primary-color);
-    }
-
-    .nav__btn ::deep a {
-        padding: 0.75rem 1.1rem;
-        font-size: .8rem;
-        font-weight: 500;
-        white-space: nowrap;
-        border: 2px solid var(--primary-color);
-        border-radius: 10px;
     }
 }
 

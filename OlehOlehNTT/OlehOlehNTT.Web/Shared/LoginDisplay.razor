@@ -7,6 +7,9 @@
         <button @onclick="async () => await SignInManager.SignOutAsync()" class="nav-link btn btn-link">Log out</button>
     </Authorized>
     <NotAuthorized>
-        <a href="/login">Log in</a>
+        <div class="nav__btn">
+            <a href="/register">Register</a>
+            <a href="/login" class="btn">Login</a>
+        </div>
     </NotAuthorized>
 </AuthorizeView>

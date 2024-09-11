@@ -7,11 +7,11 @@
         <div class="nav__menu__btn" @onclick="(e) => isOpen = !isOpen">
             @if(isOpen)
             {
-                <RemixIcon Icon=@RemixIcons.Close Type="IconType.Line" />
+                <RemixIcon Icon=@RemixIcons.Close Type="IconType.Line" Size=1.5 />
             }
             else
             {
-                <RemixIcon Icon=@RemixIcons.Menu Type=IconType.Line />
+                <RemixIcon Icon=@RemixIcons.Menu Type=IconType.Line Size=1.5 />
             }
         </div>
     </div>
@@ -22,10 +22,7 @@
         <li><NavLink Match="NavLinkMatch.Prefix" href="#review">Tentang Kami</NavLink></li>
         <li><NavLink Match="NavLinkMatch.Prefix" href="#review">Kontak</NavLink></li>
     </ul>
-    <div class="nav__btn">
-        <a href="" class="" download="">Register</a>
-        <a href="" class="btn" download="">Login</a>
-    </div>
+    <LoginDisplay />
 </nav>
 <!--===== AKHIR NAVBAR =====-->
 
