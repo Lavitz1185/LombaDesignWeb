@@ -313,7 +313,6 @@
     .service__card ::deep span {
         display: inline-block;
         margin-bottom: 1rem;
-        font-size: 1.5rem;
         color: var(--primary-color);
     }
 
@@ -486,79 +485,6 @@
             background-color: var(--primary-color-dark);
         }
 
-/*-----------------------------------*\
-  #FOOTER
-\*-----------------------------------*/
-
-.footer__container {
-    display: grid;
-    gap: 4rem 2rem;
-}
-
-.footer__logo {
-    margin-bottom: 2rem;
-}
-
-    .footer__logo ::deep img {
-        max-width: 40px;
-    }
-
-    .footer__logo ::deep span {
-        display: flex;
-        font-size: 1.5rem;
-        font-weight: 600;
-        color: var(--text-dark);
-    }
-
-.footer__col .section__description {
-    max-width: 350px;
-}
-
-.footer__socials {
-    margin-top: 2rem;
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-}
-
-    .footer__socials ::deep a {
-        font-size: 1.5rem;
-        color: var(--primary-color);
-    }
-
-        .footer__socials ::deep a:hover {
-            color: var(--primary-color-dark);
-        }
-
-.footer__col ::deep h4 {
-    margin-bottom: 2rem;
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--text-dark);
-}
-
-.footer__links {
-    display: grid;
-    gap: 1rem;
-}
-
-    .footer__links ::deep a {
-        color: var(--text-light);
-    }
-
-        .footer__links ::deep a:hover {
-            color: var(--primary-color);
-        }
-
-.footer__bar {
-    padding: 1rem;
-    font-size: 0.9rem;
-    color: var(--text-light);
-    background-color: var(--container-color);
-    text-align: center;
-}
-
-
 @media (max-width:400px) {
     .newsletter__grid button {
         padding: 1rem 2rem;
@@ -626,10 +552,6 @@
         gap: 2rem;
         margin: 4rem 0;
     }
-
-    .footer__container {
-        grid-template-columns: repeat(2, 1fr);
-    }
 }
 
 
@@ -681,14 +603,6 @@
     .newsletter__grid ::deep input[type="email"],
     .newsletter__grid ::deep button {
         width: auto;
-    }
-
-    .footer__container {
-        grid-template-columns: repeat(5, 1fr);
-    }
-
-    .footer__col:nth-child(1) {
-        grid-column: 1/3;
     }
 }
 

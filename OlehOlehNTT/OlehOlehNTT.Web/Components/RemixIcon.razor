@@ -1,4 +1,5 @@
-﻿<i @attributes="AdditionalAttributes" class="@CssClass()" style="font-size:@(Size)rem"></i>
+﻿@using System.Globalization
+<i @attributes="AdditionalAttributes" class="@CssClass()" style="font-size:@(Size.ToString(CultureInfo.InvariantCulture))rem"></i>
 
 @code {
     [Parameter]

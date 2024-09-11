@@ -1,23 +1,6 @@
 ﻿@page "/"
 @inject IJSRuntime JSRuntime
 
-@code {
-    private List<string> daftarKategori = new()
-    {
-        "Kain Tenun",
-        "Makanan",
-        "Minuman",
-        "Aksesoris",
-        "Pakaian",
-        "Lain-Lain",
-    };
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        await JSRuntime.InvokeVoidAsync("initJS");
-    }
-}
-
 <!--===== HERO =====-->
 <div class="hero">
     <header class="section__container header__container" id="about">
@@ -34,7 +17,7 @@
                 <button class="btn">Semua Produk</button>
                 <a href="#">
                     Produk Terbaru
-                    <span><RemixIcon Icon=@RemixIcons.ArrowRightUp/></span>
+                    <span><RemixIcon Icon=@RemixIcons.ArrowRightUp Size=1.5/></span>
                 </a>
             </div>
         </div>
@@ -181,21 +164,21 @@
     </div>
     <div class="service__grid">
         <div class="service__card">
-            <span><RemixIcon Icon=@RemixIcons.Grid/></span>
+            <span><RemixIcon Icon=@RemixIcons.Grid Size=1.5/></span>
             <h4>Kategori Lengkap</h4>
             <p>
                 Menyediakan berbagai produk oleh-oleh seperti makanan khas, kerajinan tangan, hingga kain tenun asli NTT.
             </p>
         </div>
         <div class="service__card">
-            <span><RemixIcon Icon=@RemixIcons.MapPin /></span>
+            <span><RemixIcon Icon=@RemixIcons.MapPin Size=1.5 /></span>
             <h4>Pengiriman Luas</h4>
             <p>
                 Layanan pengiriman ke seluruh Indonesia dengan jaminan keamanan dan ketepatan waktu.
             </p>
         </div>
         <div class="service__card">
-            <span><RemixIcon Icon=@RemixIcons.Heart /></span>
+            <span><RemixIcon Icon=@RemixIcons.Heart Size=1.5 /></span>
             <h4>Dukungan UMKM Lokal</h4>
             <p>
                 Kami mendukung pengrajin lokal dengan menjual produk-produk terbaik mereka, membantu perekonomian NTT.
@@ -282,60 +265,20 @@
     </div>
 </section>
 <!--===== AKHIR NEWSLETTER =====-->
-<!--===== FOOTER =====-->
-<footer>
-    <div class="section__container footer__container">
-        <div class="footer__col">
-            <div class="footer__logo">
-                <a href="#" class="logo">
-                    <span>OlehOlehNTT</span>
-                </a>
-            </div>
-            <p class="section__description">
-                Pekerjaan Kami adalah Menyediakan Pengalaman Belanja Yang Nyaman
-            </p>
-            <ul class="footer__socials">
-                <li>
-                    <a href="#"><RemixIcon Icon=@RemixIcons.Instagram Type=IconType.Fill/></a>
-                </li>
-                <li>
-                    <a href="#"><RemixIcon Icon=@RemixIcons.Facebook Type=IconType.Fill /></a>
-                </li>
-                <li>
-                    <a href="#"><RemixIcon Icon=@RemixIcons.Twitter Type=IconType.Fill /></a>
-                </li>
-            </ul>
-        </div>
-        <div class="footer__col">
-            <h4>Tentang Kami</h4>
-            <ul class="footer__links">
-                <li><a href="#">Tentang Kami</a></li>
-                <li><a href="#">Fitur</a></li>
-                <li><a href="#">Berita</a></li>
-                <li><a href="#">Menu</a></li>
-            </ul>
-        </div>
-        <div class="footer__col">
-            <h4>Toko</h4>
-            <ul class="footer__links">
-                <li><a href="#">Mengapa Kami?</a></li>
-                <li><a href="#">Partner Kami</a></li>
-                <li><a href="#">FAQ</a></li>
-                <li><a href="#">Blog</a></li>
-            </ul>
-        </div>
-        <div class="footer__col">
-            <h4>Bantuan</h4>
-            <ul class="footer__links">
-                <li><a href="#">Pusat bantuan</a></li>
-                <li><a href="#">Umpan Balik</a></li>
-                <li><a href="#">Kontak Kami</a></li>
-                <li><a href="#">Kebijakan Pengguna</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="footer__bar">
-        Copyright © 2024 Tim Site22. All rights reserved.
-    </div>
-</footer>
-<!--===== AKHIR FOOTER =====-->
+
+@code {
+    private List<string> daftarKategori = new()
+    {
+        "Kain Tenun",
+        "Makanan",
+        "Minuman",
+        "Aksesoris",
+        "Pakaian",
+        "Lain-Lain",
+    };
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await JSRuntime.InvokeVoidAsync("initJS");
+    }
+}
